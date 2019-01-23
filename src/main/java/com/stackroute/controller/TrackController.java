@@ -60,13 +60,6 @@ public class TrackController {
     @GetMapping(value = "track/{id}")
     public ResponseEntity<?> getByIdTrack(@PathVariable int id) throws TrackNotFoundException {
         ResponseEntity responseEntity;
-        return new ResponseEntity<Optional<Track>>(trackService.getTrackById(id),HttpStatus.OK);
+        return new ResponseEntity<Optional<Track>>(trackService.getTrackById(id), HttpStatus.OK);
     }
-//TRACKING BY NAME
-    @GetMapping(value = "/tracks/{name}")
-    public ResponseEntity<List<Track>> getTrackByName(@PathVariable String name) throws TrackNotFoundException {
-        ResponseEntity responseEntity;
-        return new ResponseEntity<List<Track>>(trackService.getTrackByName(name), HttpStatus.OK);
-    }
-
 }

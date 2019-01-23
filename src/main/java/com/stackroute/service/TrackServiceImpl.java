@@ -61,28 +61,15 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public Optional<Track> getTrackById(int id) throws TrackNotFoundException{
+    public Optional<Track> getTrackById(int id) throws TrackNotFoundException {
 
 
-        if(trackRepository.existsById(id))
-        {
+        if (trackRepository.existsById(id)) {
             return trackRepository.findById(id);
-        }
-        else
-        {
+        } else {
 
             throw new TrackNotFoundException("Given ID is not there");
         }
-    }
-
-    @Override
-    public List<Track> getTrackByName(String name) throws TrackNotFoundException {
-
-        if( trackRepository.getTrackByName(name) == null )
-        {
-            throw new TrackNotFoundException("TrackName doesn't Exist");
-        }
-        return trackRepository.getTrackByName(name);
     }
 
 }
