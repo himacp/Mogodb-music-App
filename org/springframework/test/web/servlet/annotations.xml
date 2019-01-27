@@ -1,0 +1,8 @@
+<root>
+    <item name='org.springframework.test.web.servlet.MockMvc org.springframework.test.web.servlet.ResultActions perform(org.springframework.test.web.servlet.RequestBuilder)'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val val="&quot;_-&gt;new&quot;"/>
+        </annotation>
+        <annotation name='org.jetbrains.annotations.NonBlocking'/>
+    </item>
+</root>

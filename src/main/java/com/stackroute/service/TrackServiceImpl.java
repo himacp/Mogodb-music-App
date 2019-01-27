@@ -21,13 +21,17 @@ public class TrackServiceImpl implements TrackService{
     public TrackServiceImpl(TrackRepository trackRepository)
     {
         this.trackRepository=trackRepository;
+        System.out.println("hhh");
     }
     @Override
-    public Track saveTrack(Track track) throws TrackAlreadyExistsException {
+    public Track saveTrack(Track track) throws TrackAlreadyExistsException
+    {
         if( trackRepository.existsById(track.getTrackId()))
+
         {
             throw new TrackAlreadyExistsException("Track Already Exist");
         }
+
         Track savedTrack=trackRepository.save(track);
 
         if( savedTrack == null )
@@ -43,20 +47,26 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public int deleteTrack(int id) throws TrackNotFoundException {
+    public boolean deleteTrack(int id) throws TrackNotFoundException {
 
         if( !trackRepository.existsById(id) )
         {
             throw new TrackNotFoundException("ID is not found");
         }
-        trackRepository.deleteById(id);
 
-        return 0;
+        return true;
+
     }
 
     @Override
-    public Track updateTrack(Track track){
+    public Track updateTrack(Track track) throws TrackNotFoundException {
+
+        if(!trackRepository.existsById(track.getTrackId()))
+        {
+            throw new TrackNotFoundException("Update is not done");
+        }
         Track updateTrack= trackRepository.save(track);
+
         return updateTrack;
     }
 
@@ -64,9 +74,11 @@ public class TrackServiceImpl implements TrackService{
     public Optional<Track> getTrackById(int id) throws TrackNotFoundException {
 
 
-        if (trackRepository.existsById(id)) {
+        if (trackRepository.existsById(id))
+        {
             return trackRepository.findById(id);
-        } else {
+        }
+        else {
 
             throw new TrackNotFoundException("Given ID is not there");
         }

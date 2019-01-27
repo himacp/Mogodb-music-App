@@ -44,11 +44,11 @@ public class TrackController {
 
     //POST MAPPING METHOD TO HANDLE DELETE TRACK
     @DeleteMapping(value = "/track/{id}")
-    public ResponseEntity<?> deleteTrack(@PathVariable String id) throws TrackNotFoundException {
+    public boolean deleteTrack(@PathVariable String id) throws TrackNotFoundException {
         ResponseEntity responseEntity;
             trackService.deleteTrack(Integer.parseInt(id));
             responseEntity=new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);
-        return responseEntity;
+        return true;
     }
 
     @GetMapping("/track")
