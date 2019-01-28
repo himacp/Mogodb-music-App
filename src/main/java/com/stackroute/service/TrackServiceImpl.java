@@ -83,5 +83,11 @@ public class TrackServiceImpl implements TrackService{
             throw new TrackNotFoundException("Given ID is not there");
         }
     }
-
+    @Override
+    public boolean isTrackAlreadyPresent(Track track){
+        if (trackRepository.existsById(track.getTrackId())){
+            return true;
+        }
+        return false;
+    }
 }

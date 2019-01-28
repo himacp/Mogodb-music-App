@@ -25,7 +25,10 @@ public class TrackController {
 
 //POST MAPPING METHOD TO HANDLE POST REQUEST
     @PostMapping("track")
-    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackNotFoundException, TrackAlreadyExistsException {
+    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackAlreadyExistsException {
+        if (trackService.isTrackAlreadyPresent(track)){
+            throw new TrackAlreadyExistsException("track already exists");
+        }
         trackService.saveTrack(track);
         ResponseEntity responseEntity=new ResponseEntity<String>("Successfully Created", HttpStatus.CREATED);;
         return responseEntity;

@@ -15,5 +15,6 @@ public interface TrackService {
     public boolean deleteTrack(int id) throws TrackNotFoundException;
     public Track updateTrack(Track track) throws TrackNotFoundException;
     public Optional<Track> getTrackById(int id) throws TrackNotFoundException;
+    boolean isTrackAlreadyPresent(Track track);
 
 }

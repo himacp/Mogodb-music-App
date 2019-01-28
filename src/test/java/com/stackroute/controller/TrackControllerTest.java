@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.domain.Track;
 import com.stackroute.exception.TrackAlreadyExistsException;
 import com.stackroute.exception.TrackNotFoundException;
+import com.stackroute.repository.TrackRepository;
 import com.stackroute.service.TrackService;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -43,6 +45,8 @@ public class TrackControllerTest {
     private Track track;
     @MockBean
     private TrackService trackService;
+    @MockBean
+    private TrackRepository trackRepository;
     @InjectMocks
     private TrackController trackController;
 
